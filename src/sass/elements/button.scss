@@ -7,10 +7,6 @@
         height: 3.25em;
     }
 
-    // &.is-secondary {
-    //     height: 3em;
-    // }
-
     &:not(.is-secondary) {
         font-size: $size-6;
         font-weight: $weight-bold;
