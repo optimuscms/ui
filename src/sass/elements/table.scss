@@ -1,0 +1,82 @@
+.table {
+    &.is-listing {
+        margin-bottom: 0;
+        white-space: nowrap;
+        border-bottom: $table-cell-border;
+
+        th {
+            padding: 20px;
+        }
+
+        td {
+            padding: 15px 20px;
+        }
+
+        th,
+        td {
+            vertical-align: middle;
+
+            &:first-child {
+                padding-left: 30px;
+            }
+
+            &:last-child {
+                padding-right: 30px;
+            }
+        }
+    }
+
+    td,
+    th {
+        &.is-narrow {
+            width: 1%;
+        }
+
+        &.is-sort-handle {
+            cursor: grab;
+            text-align: center;
+        }
+    }
+
+    tr {
+        td,
+        th {
+            &.has-actions {
+                text-align: center;
+
+                a {
+                    color: $grey-dark;
+                }
+            }
+        }
+
+        &:hover {
+            td,
+            th {
+                &.has-actions {
+                    a {
+                        color: $grey-darker;
+
+                        &:hover {
+                            color: $primary;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.is-draft {
+            th,
+            td {
+                background-color: lighten($grey-lighter, 2%);
+            }
+
+            &:not(:hover) {
+                th,
+                td {
+                    color: lighten($text, 20%);
+                }
+            }
+        }
+    }
+}

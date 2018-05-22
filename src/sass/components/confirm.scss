@@ -1,0 +1,58 @@
+.confirm {
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: $radius;
+    background-color: $white;
+
+    .confirm-content {
+        padding: 20px;
+    }
+
+    .confirm-footer {
+        display: flex;
+        align-items: stretch;
+
+        .button {
+            flex-grow: 1;
+            display: flex;
+            flex-basis: 0;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                z-index: 2
+            }
+
+            &:focus,
+            &:active {
+                z-index: 3;
+
+                &:hover {
+                    z-index: 4
+                }
+            }
+
+            &:not(:first-child) {
+                margin-left: -1px;
+            }
+
+            &:first-child {
+                border-left: 0;
+                border-radius: 0 0 0 $radius;
+            }
+
+            &:last-child {
+                border-right: 0;
+                border-radius: 0 0 $radius 0;
+            }
+
+            &.is-danger {
+                &:hover {
+                    border-color: darken($danger, 2.5%);
+                }
+            }
+        }
+    }
+}

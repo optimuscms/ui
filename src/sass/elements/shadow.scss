@@ -1,0 +1,30 @@
+.has-shadow {
+    z-index: 1;
+    position: relative;
+    margin-bottom: 15px;
+
+    &.is-primary {
+        &:after,
+        &:before {
+            z-index: -1;
+            content: '';
+            height: 20px;
+            bottom: -15px;
+            filter: blur(2px);
+            position: absolute;
+            width: calc(50% - 7px);
+        }
+
+        &:before {
+            left: 5px;
+            transform: skew(-25deg);
+            background: linear-gradient(-185deg, rgba($black, .35) 0%, rgba($black, .0) 70%);
+        }
+
+        &:after {
+            right: 5px;
+            transform: skew(25deg);
+            background: linear-gradient(185deg, rgba($black, .35) 0%, rgba($black, .0) 70%);
+        }
+    }
+}

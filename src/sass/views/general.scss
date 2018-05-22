@@ -1,0 +1,27 @@
+.has-font-primary {
+    @include font-primary;
+}
+
+.has-text-secondary {
+    color: $secondary !important;
+}
+
+.has-text-blue {
+    color: $blue !important;
+}
+
+.has-border {
+    border: solid 1px $grey-dark;
+}
+
+.has-border-top {
+    border-top: solid 1px $grey-dark;
+}
+
+.has-border-bottom {
+    border-bottom: solid 1px $grey-dark;
+}
+
+hr {
+    background-color: $grey-dark;
+}

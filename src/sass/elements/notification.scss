@@ -1,0 +1,21 @@
+.notification {
+    &.is-shadowed {
+        box-shadow: 0 1px 2px rgba($black, .1), 0 -1px 0 rgba($black, .02);
+    }
+    
+    &.is-danger {
+        .content * {
+            color: $danger-invert;
+        }
+
+        ul > li {
+            padding-left: 1.5em;
+            
+            &:before {
+                left: .4em;
+                border-color: $danger-invert;
+                background-color: $danger-invert;
+            }
+        }
+    }
+}
