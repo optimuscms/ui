@@ -12,6 +12,7 @@
     "form-backend-validation": "^2.3.3",
     "jwt-decode": "^2.2.0",
     "moment": "^2.22.1",
+    "npm": "^6.0.1",
     "nprogress": "^0.2.0",
     "optix-sass": "^3.0.3",
     "velocity-animate": "^1.5.1",

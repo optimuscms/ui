@@ -65,7 +65,7 @@
             }),
 
             submit() {
-                this.form.post('/auth/login').then(response => {
+                this.form.post('/api/auth/login').then(response => {
                     let user = response.data;
 
                     this.setUser({

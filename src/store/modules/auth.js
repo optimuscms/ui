@@ -34,7 +34,7 @@ const getters = {
 
 const actions = {
     logout({ commit }) {
-        return axios.post('/auth/logout').then(response => {
+        return axios.post('/api/auth/logout').then(response => {
             commit('setUser', null);
             commit('setToken', null);
         });
