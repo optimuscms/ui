@@ -1,7 +1,7 @@
 <template>
     <section class="background is-gradient login-holder p-4">
         <transition :css="false" @leave="loginLeave">
-            <div class="login-wrap has-shadow is-primary" v-if="! isAuthed">
+            <div class="login-wrap has-shadow is-primary" v-if="! isAuthenticated">
                 <div class="login-top background is-white px-5 py-6">
                     <h1 class="title is-size-1 is-uppercase">Optimus</h1>
                     <h2 class="subtitle is-size-6 has-text-primary">Managing your content</h2>
@@ -28,7 +28,7 @@
     export default {
         computed: {
             ...mapGetters({
-                isAuthed: 'auth/hasToken'
+                isAuthenticated: 'auth/check'
             })
         },
 

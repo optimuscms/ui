@@ -23,9 +23,7 @@ const getters = {
                 ) {
                     return true;
                 }
-            } catch (error) {
-                //
-            }
+            } catch (error) {}
         }
 
         return false;
