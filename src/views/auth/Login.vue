@@ -60,21 +60,14 @@
 
         methods: {
             ...mapMutations({
-                setUser: 'auth/setUser',
                 setToken: 'auth/setToken'
             }),
 
             submit() {
                 this.form.post('/api/auth/login').then(response => {
-                    let user = response.data;
-
-                    this.setUser({
-                        id: user.id,
-                        email: user.email,
-                        name: user.name
-                    });
-
-                    this.setToken(user.access_token);
+                    this.setToken(response.token);
+                    
+                    this.$router.push({ to: 'home' });
                 });
             }
         }
