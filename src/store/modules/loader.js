@@ -17,6 +17,10 @@ const mutations = {
         if (index != -1) {
             state.loading.splice(index, 1);
         }
+    },
+
+    clear(state) {
+        state.loading = [];
     }
 }
 
