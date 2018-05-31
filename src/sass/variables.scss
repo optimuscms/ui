@@ -75,21 +75,6 @@ $pagination-hover-border-color: darken($border, 10%);
 
 $breadcrumb-item-active-color: $primary;
 
-$icon-colors: (
-    pdf: #CB0606,
-    doc: #067FCB,
-    xls: #79AC00,
-    html: #BBCACF,
-    mp3: #EBC200,
-    mp4: #435055,
-    avi: #838383,
-    js: #2B2B2B,
-    mov: #76B8B7,
-    psd: #192257,
-    tiff: #7B0000,
-    ai: #3B2A10
-);
-
 @mixin font-primary() {
     font-style: italic;
     font-weight: $weight-normal !important;

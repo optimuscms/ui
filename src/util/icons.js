@@ -1,4 +1,8 @@
+import Vue from 'vue';
+import Icon from '@fortawesome/vue-fontawesome';
 import fontawesome from '@fortawesome/fontawesome';
+
+Vue.component('icon', Icon);
 
 fontawesome.library.add(
     require('@fortawesome/fontawesome-free-solid/faAngleDown'),

@@ -23,6 +23,11 @@
                     progress.start();
                 } else {
                     progress.done();
+
+                    // Scroll to top of page, fix for quill editor
+                    Vue.nextTick(() => {
+                        window.scrollTo(0, 0);
+                    });
                 }
             }
         },

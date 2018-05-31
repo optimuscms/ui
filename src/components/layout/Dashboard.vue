@@ -28,7 +28,6 @@
 
 <script>
     import { mapGetters } from 'vuex';
-    import Icon from '@fortawesome/vue-fontawesome';
 
     import Loader from '../ui/Loader';
     import MainNav from './nav/MainNav';
@@ -38,7 +37,6 @@
     export default {
         components: {
             AppHeader,
-            Icon,
             Loader,
             MainNav,
             SubNav

@@ -11,13 +11,7 @@
 </template>
 
 <script>
-    import Icon from '@fortawesome/vue-fontawesome';
-
     export default {
-        components: {
-            Icon
-        },
-
         props: {
             icon: {
                 type: String,
