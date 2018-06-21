@@ -1,7 +1,7 @@
 <template>
     <transition name="notification">
-        <div class="notification is-radiusless p-4" v-if="active">
-            <button class="delete" v-if="closeable" @click="$emit('close')"></button>
+        <div class="notification p-4" v-if="isActive">
+            <a class="delete" v-if="closeable" @click="close"></a>
 
             <div class="content">
                 <slot></slot>
@@ -21,6 +21,25 @@
             closeable: {
                 type: Boolean,
                 default: true
+            }
+        },
+
+        data() {
+            return {
+                isActive: false
+            }
+        },
+
+        watch: {
+            active(value) {
+                this.isActive = value;
+            }
+        },
+
+        methods: {
+            close() {
+                this.isActive = false;
+                this.$emit('close');
             }
         }
     }

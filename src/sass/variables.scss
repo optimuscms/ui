@@ -74,6 +74,7 @@ $pagination-border-color: $border;
 $pagination-hover-border-color: darken($border, 10%);
 
 $breadcrumb-item-active-color: $primary;
+$breadcrumb-item-separator-color: $text;
 
 @mixin font-primary() {
     font-style: italic;

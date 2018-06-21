@@ -1,40 +1,40 @@
 <template>
-    <transition name="fade" mode="out-in"> 
-        <div class="modal is-active" v-if="active">
-            <div class="modal-background" @click="close"></div>
-            
-            <div class="modal-content">
-                <div class="confirm">
-                    <div class="confirm-content">
-                        <div class="content has-text-grey-darker has-text-centered">
-                            <slot v-bind="item">
-                                Are you sure?
-                            </slot>
-                        </div>
+    <modal :active="isActive" @close="close">
+        <div class="modal-content">
+            <div class="confirm">
+                <div class="confirm-content">
+                    <div class="content has-text-grey-darker has-text-centered">
+                        <slot v-bind="item">
+                            Are you sure?
+                        </slot>
                     </div>
-
-                    <footer class="confirm-footer">
-                        <button
-                            class="button"
-                            :class="['is-' + type]"
-                            @click="confirm">
-                            <slot name="confirmButtonText">Confirm</slot>
-                        </button>
-
-                        <button
-                            class="button"
-                            @click="close">
-                            <slot name="cancelButtonText">Cancel</slot>
-                        </button>
-                    </footer>
                 </div>
+
+                <footer class="confirm-footer">
+                    <a class="button"
+                        :class="['is-' + type]"
+                        @click="confirm">
+                        <slot name="confirmButtonText">Confirm</slot>
+                    </a>
+
+                    <a class="button"
+                        @click="close">
+                        <slot name="cancelButtonText">Cancel</slot>
+                    </a>
+                </footer>
             </div>
         </div>
-    </transition>
+    </modal>
 </template>
 
 <script>
+    import Modal from './Modal';
+
     export default {
+        components: {
+            Modal
+        },
+
         props: {
             type: {
                 type: String,
@@ -44,7 +44,7 @@
 
         data() {
             return {
-                active: false,
+                isActive: false,
                 item: null
             }
         },
@@ -57,12 +57,12 @@
 
             open(item) {
                 this.item = item;
-                this.active = true;
+                this.isActive = true;
             },
 
-            close(item) {
+            close() {
                 this.item = null;
-                this.active = false;
+                this.isActive = false;
             }
         }
     }
