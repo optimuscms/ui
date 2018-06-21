@@ -1,13 +1,23 @@
 <template>
-    <div class="select is-multi">
-        <vue-select
-            :id="id"
-            :value="value"
-            :multiple="true"
-            :custom-label="label"
-            :options="options.map(category => category.id)"
-            @input="emit">
-        </vue-select>
+    <div class="field" :class="{ 'is-required': required }">
+        <label :for="id" class="label">{{ label }}</label>
+
+        <div class="control">
+            <div class="select is-fullwidth is-multi">
+                <vue-select
+                    :id="id"
+                    :value="value"
+                    :multiple="true"
+                    :custom-label="optionLabel"
+                    :options="options.map(category => category.id)"
+                    @input="emit">
+                </vue-select>
+            </div>
+        </div>
+
+        <div class="help" v-if="$slots['help']">
+            <slot name="help"></slot>
+        </div>
     </div>
 </template>
 
@@ -20,12 +30,22 @@
         },
 
         props: {
+            value: [Object, Array, String, Number],
+            
+            label: {
+                type: String,
+                required: true
+            },
+
             id: {
                 type: String,
                 required: false
             },
 
-            value: [Object, Array, String, Number],
+            required: {
+                type: Boolean,
+                default: false
+            },
 
             options: {
                 type: Array,
@@ -34,7 +54,7 @@
         },
 
         methods: {
-            label(id) {
+            optionLabel(id) {
                 return this.options.find(option => option.id === id).name;
             },
 

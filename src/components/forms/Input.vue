@@ -6,7 +6,9 @@
             <input :type="type" :id="id" class="input" v-model="newValue" :required="required">
         </div>
 
-        <slot name="help"></slot>
+        <div class="help" v-if="$slots['help']">
+            <slot name="help"></slot>
+        </div>
     </div>
 </template>
 
