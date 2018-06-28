@@ -28,3 +28,6 @@ window.Vue = Vue;
 // Utilities
 import './util/forms';
 import './util/icons';
+
+// Import media manager
+import '@optimuscms/media-manager/src/bootstrap';

@@ -1,7 +1,7 @@
 <template>
     <transition name="notification">
-        <div class="notification p-4" v-if="isActive">
-            <a class="delete" v-if="closeable" @click="close"></a>
+        <div class="notification p-4">
+            <a class="delete" v-if="closeable" @click="$emit('close')"></a>
 
             <div class="content">
                 <slot></slot>
@@ -13,33 +13,9 @@
 <script>
     export default {
         props: {
-            active: {
-                type: Boolean,
-                default: false
-            },
-
             closeable: {
                 type: Boolean,
                 default: true
-            }
-        },
-
-        data() {
-            return {
-                isActive: false
-            }
-        },
-
-        watch: {
-            active(value) {
-                this.isActive = value;
-            }
-        },
-
-        methods: {
-            close() {
-                this.isActive = false;
-                this.$emit('close');
             }
         }
     }

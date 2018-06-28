@@ -23,11 +23,14 @@
                 </loader>
             </div>
         </section>
+
+        <media-manager></media-manager>
     </div>
 </template>
 
 <script>
     import { mapGetters } from 'vuex';
+    import MediaManager from '@optimuscms/media-manager/src/components/Manager';
 
     import Loader from '../ui/Loader';
     import MainNav from './nav/MainNav';
@@ -39,6 +42,7 @@
             AppHeader,
             Loader,
             MainNav,
+            MediaManager,
             SubNav
         },
 

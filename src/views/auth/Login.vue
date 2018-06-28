@@ -1,6 +1,9 @@
 <template>
     <auth>
-        <errors class="mb-2" :errors="form.errors" v-if="form.errors.any()"></errors>
+        <errors class="mb-2"
+            :errors="form.errors.all()"
+            v-if="form.errors.any()"
+        ></errors>
 
         <form @submit.prevent="submit">
             <div class="field mb-2">

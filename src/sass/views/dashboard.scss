@@ -38,6 +38,7 @@ $side-secondary-width: 260px;
                 > a {
                     display: flex;
                     padding: 20px 10px;
+                    text-align: center;
                     align-items: center;
                     flex-direction: column;
                     justify-content: center;
@@ -104,6 +105,12 @@ $side-secondary-width: 260px;
                     &:active {
                         background-color: darken($blue-darker, 5%);
                     }
+                }
+
+                &.is-divider {
+                    height: 1px;
+                    margin: 15px 0;
+                    background-color: $blue-dark;
                 }
 
                 &.is-active {

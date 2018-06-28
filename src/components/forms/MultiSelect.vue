@@ -10,8 +10,8 @@
                     :multiple="true"
                     :custom-label="optionLabel"
                     :options="options.map(category => category.id)"
-                    @input="emit">
-                </vue-select>
+                    @input="emit"
+                ></vue-select>
             </div>
         </div>
 
