@@ -1,0 +1,51 @@
+<template>
+    <form @submit.prevent="submit">
+        <div class="field has-addons">
+            <div class="control">
+                <input type="search" class="input" v-model="input" :placeholder="placeholder">
+            </div>
+
+            <div class="control">
+                <button class="button">
+                    <span class="icon">
+                        <icon icon="search"></icon>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </form>
+</template>
+
+<script>
+    export default {
+        props: {
+            placeholder: {
+                type: String,
+                default: 'Search'
+            },
+
+            value: {
+                type: String,
+                default: null
+            }
+        },
+
+        data() {
+            return {
+                input: this.value 
+            }
+        },
+
+        watch: {
+            input() {
+                this.$emit('input', this.input);
+            }
+        },
+
+        methods: {
+            submit() {
+                this.$emit('submit');
+            }
+        }
+    }
+</script>

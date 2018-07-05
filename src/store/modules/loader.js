@@ -7,11 +7,11 @@ const getters = {
 }
 
 const mutations = {
-    add(state, item) {
+    start(state, item) {
         state.loading.push(item);
     },
 
-    remove(state, item) {
+    stop(state, item) {
         let index = state.loading.indexOf(item);
 
         if (index != -1) {

@@ -1,3 +1,7 @@
+.is-faded {
+    opacity: .4;
+}
+
 .has-font-primary {
     @include font-primary;
 }

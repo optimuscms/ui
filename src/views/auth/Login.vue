@@ -1,6 +1,7 @@
 <template>
     <auth>
-        <errors class="mb-2"
+        <errors
+            class="mb-2"
             :errors="form.errors.all()"
             v-if="form.errors.any()"
         ></errors>
@@ -10,7 +11,12 @@
                 <label for="Username" class="is-hidden">Username</label>
 
                 <div class="control">
-                    <input type="text" class="input input-primary" placeholder="Username" v-model="form.username">
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        v-model="form.username"
+                        class="input input-primary"
+                    >
                 </div>
             </div>
 
@@ -18,19 +24,33 @@
                 <label for="Password" class="is-hidden">Password</label>
 
                 <div class="control">
-                    <input type="password" class="input input-primary" placeholder="Password" v-model="form.password">
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        v-model="form.password"
+                        class="input input-primary"
+                    >
                 </div>
             </div>
 
             <div class="field mb-3">
                 <div class="control">
-                    <button type="submit" class="button is-primary is-big is-fullwidth" :class="{ 'is-loading': form.processing }">Login</button>
+                    <button
+                        type="submit"
+                        :class="{ 'is-loading': form.processing }"
+                        class="button is-primary is-big is-fullwidth"
+                    >Login</button>
                 </div>
             </div>
 
             <div class="columns">
                 <div class="column">
-                    <input type="checkbox" id="Remember" class="checkbox" v-model="form.remember">
+                    <input 
+                        id="Remember"
+                        type="checkbox"
+                        class="checkbox"
+                        v-model="form.remember"
+                    >
                     <label for="Remember" class="is-size-8">Remember Me</label>
                 </div>
             </div>
