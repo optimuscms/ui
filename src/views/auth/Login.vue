@@ -88,7 +88,7 @@
 
             submit() {
                 this.form.post('/api/auth/login').then(response => {
-                    this.setToken(response.token);
+                    this.setToken(response.access_token);
                     
                     this.$router.push({ to: 'home' });
                 });
