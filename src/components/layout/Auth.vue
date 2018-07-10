@@ -1,17 +1,6 @@
 <template>
     <section class="background is-gradient login-holder p-4">
-        <transition :css="false" @leave="loginLeave">
-            <div class="login-wrap has-shadow is-primary" v-if="! isAuthenticated">
-                <div class="login-top background is-white px-5 py-6">
-                    <h1 class="title is-size-1 is-uppercase">Optimus</h1>
-                    <h2 class="subtitle is-size-6 has-text-primary">Managing your content</h2>
-                </div>
-
-                <div class="login-bottom background is-secondary p-5">
-                    <slot></slot>
-                </div>
-            </div>
-        </transition>
+        <slot></slot>
 
         <div class="login-logo pt-4">
             <svg style="background-color:#ffffff00" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295 64" width="295">
@@ -20,33 +9,3 @@
         </div>
     </section>
 </template>
-
-<script>
-    import { mapGetters } from 'vuex';
-    import Velocity from 'velocity-animate';
-
-    export default {
-        computed: {
-            ...mapGetters({
-                isAuthenticated: 'auth/check'
-            })
-        },
-
-        methods: {
-            loginLeave(el, done) {
-                Velocity(el, {
-                    translateX: '-30%',
-                    opacity: 0
-                },
-                {
-                    duration: 350,
-                    complete: () => {
-                        this.$router.push({
-                            name: 'home'
-                        });
-                    }
-                });
-            }
-        }
-    }
-</script>

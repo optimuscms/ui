@@ -62,7 +62,8 @@
 
         methods: {
             logout() {
-                this.$store.dispatch('auth/logout').then(() => {
+                axios.post('/api/auth/logout').then(response => {
+                    this.$auth.removeToken();
                     this.$router.push({ name: 'login' });
                 });
             }

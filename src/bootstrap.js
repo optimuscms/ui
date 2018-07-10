@@ -25,6 +25,9 @@ progress.configure({
 import Vue from 'vue';
 window.Vue = Vue;
 
+import VueAuth from '@optix/vue-auth';
+Vue.use(VueAuth);
+
 // Utilities
 import './util/forms';
 import './util/icons';

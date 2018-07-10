@@ -9,6 +9,7 @@
     "@fortawesome/vue-fontawesome": "^0.0.22",
     "@optimuscms/editor": "latest",
     "@optimuscms/media-manager": "latest",
+    "@optix/vue-auth": "latest",
     "bulma": "^0.7.1",
     "form-backend-validation": "^2.3.3",
     "jwt-decode": "^2.2.0",
