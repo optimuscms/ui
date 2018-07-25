@@ -3,7 +3,12 @@
         <label :for="id" class="label">{{ label }}</label>
 
         <div class="control">
-            <editor v-model="newValue"></editor>
+            <editor
+                v-model="newValue"
+                :height="height"
+                :toolbar="toolbar"
+                :plugins="plugins"
+            ></editor>
         </div>
 
         <div class="help" v-if="$slots['help']">
@@ -13,13 +18,9 @@
 </template>
 
 <script>
-    import Editor from '@optimuscms/editor/src/Editor';
+    import Editor from '@optimuscms/editor';
 
     export default {
-        components: {
-            Editor
-        },
-
         props: {
             value: {
                 default: null
@@ -38,7 +39,11 @@
             required: {
                 type: Boolean,
                 default: false
-            }
+            },
+
+            height: Number,
+            toolbar: String,
+            plugins: String
         },
 
         data() {
