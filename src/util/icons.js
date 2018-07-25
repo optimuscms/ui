@@ -1,16 +1,16 @@
 import Vue from 'vue';
-import Icon from '@fortawesome/vue-fontawesome';
-import fontawesome from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-Vue.component('icon', Icon);
+Vue.component('icon', FontAwesomeIcon);
 
-fontawesome.library.add(
-    require('@fortawesome/fontawesome-free-solid/faAngleDown'),
-    require('@fortawesome/fontawesome-free-solid/faPencilAlt'),
-    require('@fortawesome/fontawesome-free-solid/faSignOutAlt'),
-    require('@fortawesome/fontawesome-free-solid/faSearch'),
-    require('@fortawesome/fontawesome-free-solid/faSort'),
-    require('@fortawesome/fontawesome-free-solid/faSortDown'),
-    require('@fortawesome/fontawesome-free-solid/faSortUp'),
-    require('@fortawesome/fontawesome-free-solid/faTrashAlt')
+library.add(
+    require('@fortawesome/free-solid-svg-icons/faAngleDown').definition,
+    require('@fortawesome/free-solid-svg-icons/faPencilAlt').definition,
+    require('@fortawesome/free-solid-svg-icons/faSignOutAlt').definition,
+    require('@fortawesome/free-solid-svg-icons/faSearch').definition,
+    require('@fortawesome/free-solid-svg-icons/faSort').definition,
+    require('@fortawesome/free-solid-svg-icons/faSortDown').definition,
+    require('@fortawesome/free-solid-svg-icons/faSortUp').definition,
+    require('@fortawesome/free-solid-svg-icons/faTrashAlt').definition
 );

@@ -4,9 +4,9 @@
   "author": "Rich Moore",
   "license": "MIT",
   "dependencies": {
-    "@fortawesome/fontawesome": "^1.1.8",
-    "@fortawesome/fontawesome-free-solid": "^5.0.13",
-    "@fortawesome/vue-fontawesome": "^0.0.22",
+    "@fortawesome/fontawesome-svg-core": "^1.2.2",
+    "@fortawesome/free-solid-svg-icons": "^5.2.0",
+    "@fortawesome/vue-fontawesome": "^0.1.1",
     "@optimuscms/editor": "latest",
     "@optimuscms/media-manager": "latest",
     "@optix/vue-auth": "latest",
