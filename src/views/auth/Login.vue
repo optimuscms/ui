@@ -85,6 +85,8 @@
             submit() {
                 this.form.post('/api/auth/login').then(response => {
                     this.$auth.setToken(response.access_token);
+                    this.$auth.setUser(response.user);
+
                     this.isAuthenticated = this.$auth.check();
                 });
             },
