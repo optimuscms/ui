@@ -1,17 +1,17 @@
 <template>
-    <div class="field">
-        <div class="control">
-            <input type="checkbox" :id="id" class="checkbox" v-model="newValue">
-            <label :for="id">{{ label }}</label>
-        </div>
+    <div class="control">
+        <input :name="id" :type="type" :id="id" class="checkbox" :value="checkedValue" v-model="newValue">
+        <label :for="id">{{ label }}</label>
     </div>
 </template>
 
 <script>
     export default {
         props: {
-            value: {
-                default: null
+            value: {},
+
+            checkedValue: {
+                default: true
             },
 
             label: {
@@ -22,6 +22,11 @@
             id: {
                 type: String,
                 required: true
+            },
+
+            type: {
+                type: String,
+                default: 'checkbox'
             }
         },
 

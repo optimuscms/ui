@@ -1,25 +1,25 @@
 <template>
     <transition :css="false" @before-enter="beforeEnter" @enter="enter">
-        <div v-show="! isLoading">
+        <div v-show="! loading">
             <slot></slot>
         </div>
     </transition>
 </template>
 
 <script>
-    import { mapGetters } from 'vuex';
     import Velocity from 'velocity-animate';
 
     export default {
-        computed: {
-            ...mapGetters({
-                isLoading: 'loader/isLoading'
-            })
+        props: {
+            loading: {
+                type: Boolean,
+                required: true
+            }
         },
 
         watch: {
-            isLoading() {
-                if (this.isLoading) {
+            loading(value) {
+                if (value) {
                     progress.start();
                 } else {
                     progress.done();
@@ -28,7 +28,7 @@
         },
 
         mounted() {
-            if (this.isLoading) {
+            if (this.loading) {
                 progress.start();
             }
         },

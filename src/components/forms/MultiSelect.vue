@@ -1,65 +1,64 @@
 <template>
-    <div class="field" :class="{ 'is-required': required }">
-        <label :for="id" class="label">{{ label }}</label>
-
-        <div class="control">
-            <div class="select is-fullwidth is-multi">
-                <vue-select
-                    :id="id"
-                    :value="value"
-                    :multiple="true"
-                    :custom-label="optionLabel"
-                    :options="options.map(category => category.id)"
-                    @input="emit"
-                ></vue-select>
-            </div>
-        </div>
-
-        <div class="help" v-if="$slots['help']">
-            <slot name="help"></slot>
-        </div>
+    <div class="select is-fullwidth is-multi">
+        <vue-select
+            :value="newValue"
+            @input="value => $emit('input', value)"
+            :options="options.map(category => category[this.optionValue])"
+            :multiple="true"
+            :custom-label="label"
+        ></vue-select>
     </div>
 </template>
 
 <script>
-    import VueSelect from 'vue-multiselect'
+    import VueSelect from 'vue-multiselect';
     
     export default {
-        components: {
-            VueSelect
-        },
+        components: { VueSelect },
 
         props: {
-            value: [Object, Array, String, Number],
-            
-            label: {
-                type: String,
-                required: true
-            },
-
-            id: {
-                type: String,
-                required: false
-            },
-
-            required: {
-                type: Boolean,
-                default: false
-            },
-
             options: {
                 type: Array,
                 required: true
+            },
+
+            value: {
+                type: Array,
+                required: true
+            },
+
+            optionValue: {
+                type: String,
+                default: 'id'
+            },
+
+            optionLabel: {
+                type: String,
+                default: 'name'
+            }
+        },
+
+        computed: {
+            newValue() {
+                if (! this.options.length) {
+                    return [];
+                }
+
+                let optionValues = this.options.map(option => {
+                    return option[this.optionValue]
+                });
+
+                return this.value.filter(value => optionValues.includes(value));
             }
         },
 
         methods: {
-            optionLabel(id) {
-                return this.options.find(option => option.id === id).name;
-            },
-
-            emit(value) {
-                this.$emit('input', value);
+            label(value) {
+                let option = this.options.find(option => {
+                    return option[this.optionValue] === value;
+                });
+                
+                return option ? option[this.optionLabel] : false;
             }
         }
     }

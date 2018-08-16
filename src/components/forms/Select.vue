@@ -1,18 +1,8 @@
 <template>
-    <div class="field" :class="{ 'is-required': required }">
-        <label :for="id" class="label">{{ label }}</label>
-
-        <div class="control">
-            <div class="select is-fullwidth">
-                <select :id="id" v-model="newValue" :required="required">
-                    <slot></slot>
-                </select>
-            </div>
-        </div>
-
-        <div class="help" v-if="$slots['help']">
-            <slot name="help"></slot>
-        </div>
+    <div class="select is-fullwidth">
+        <select :id="id" v-model="newValue" :required="required">
+            <slot></slot>
+        </select>
     </div>
 </template>
 
@@ -21,11 +11,6 @@
         props: {
             value: {
                 default: null
-            },
-
-            label: {
-                type: String,
-                required: true
             },
 
             id: {

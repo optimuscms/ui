@@ -1,29 +1,17 @@
 <template>
-    <div class="field" :class="{ 'is-required': required }">
-        <label :for="id" class="label">{{ label }}</label>
-
-        <div class="control">
-            <input :type="type" :id="id" class="input" v-model="newValue" :required="required">
-        </div>
-
-        <div class="help" v-if="$slots['help']">
-            <slot name="help"></slot>
-        </div>
-    </div>
+    <component
+        :is="type === 'textarea' ? type : 'input'"
+        :id="id"
+        :type="type"
+        :class="type === 'textarea' ? 'textarea' : 'input'"
+        @input="newValue = $event.currentTarget.value"
+        :value.prop="newValue"
+    ></component>
 </template>
 
 <script>
     export default {
         props: {
-            value: {
-                default: null
-            },
-
-            label: {
-                type: String,
-                required: true
-            },
-
             id: {
                 type: String,
                 required: true
@@ -34,15 +22,15 @@
                 default: 'text'
             },
 
-            required: {
-                type: Boolean,
-                default: false
+            value: {
+                default: null
             }
         },
 
-        data() {
-            return  {
-                newValue: this.value
+        computed: {
+            newValue: {
+                get() { return this.value },
+                set(value) { this.$emit('input', value) }
             }
         },
 
