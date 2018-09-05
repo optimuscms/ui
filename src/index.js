@@ -25,5 +25,8 @@ export default function install (Vue, options = {}) {
     Vue.component('o-sub-nav-item', require('./components/layout/nav/SubNavItem'));
 
     Vue.component('o-confirm', require('./components/ui/Confirm'));
+    Vue.component('o-dropdown', require('./components/ui/Dropdown'));
     Vue.component('o-loader', require('./components/ui/Loader'));
+    Vue.component('o-notification', require('./components/ui/Notification'));
+    Vue.component('o-modal', require('./components/ui/Modal'));
 }
