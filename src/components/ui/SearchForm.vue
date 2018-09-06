@@ -1,8 +1,15 @@
 <template>
     <form @submit.prevent="submit">
         <div class="field has-addons">
+            <label for="search" class="is-hidden">Search</label>
+
             <div class="control">
-                <input type="search" class="input" v-model="input" :placeholder="placeholder">
+                <o-input
+                    id="search"
+                    type="search"
+                    v-model="input"
+                    :placeholder="placeholder"
+                ></o-input>
             </div>
 
             <div class="control">

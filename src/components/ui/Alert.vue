@@ -1,5 +1,5 @@
 <template>
-    <modal :active="isActive" @close="close">
+    <o-modal :active="isActive" @close="close">
         <div class="modal-content">
             <div class="alert">
                 <div class="alert-content">
@@ -15,17 +15,11 @@
                 </footer>
             </div>
         </div>
-    </modal>
+    </o-modal>
 </template>
 
 <script>
-    import Modal from './Modal';
-
     export default {
-        components: {
-            Modal
-        },
-
         data() {
             return {
                 isActive: false,

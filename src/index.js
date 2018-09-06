@@ -27,6 +27,9 @@ export default function install (Vue, options = {}) {
     Vue.component('o-confirm', require('./components/ui/Confirm'));
     Vue.component('o-dropdown', require('./components/ui/Dropdown'));
     Vue.component('o-loader', require('./components/ui/Loader'));
-    Vue.component('o-notification', require('./components/ui/Notification'));
     Vue.component('o-modal', require('./components/ui/Modal'));
+    Vue.component('o-notification', require('./components/ui/Notification'));
+    Vue.component('o-pagination', require('./components/ui/Pagination'));
+    Vue.component('o-search-form', require('./components/ui/SearchForm'));
+    Vue.component('o-sort', require('./components/ui/Sort'));
 }
