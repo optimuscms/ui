@@ -20,10 +20,11 @@ export default function install (Vue, options = {}) {
 
     Vue.component('o-header', require('./components/layout/Header'));
     Vue.component('o-main-nav', require('./components/layout/nav/MainNav'));
-    Vue.component('o-nav-item', require('./components/layout/nav/MainNavItem'));
+    Vue.component('o-main-nav-item', require('./components/layout/nav/MainNavItem'));
     Vue.component('o-sub-nav', require('./components/layout/nav/SubNav'));
     Vue.component('o-sub-nav-item', require('./components/layout/nav/SubNavItem'));
 
+    Vue.component('o-alert', require('./components/ui/Alert'));
     Vue.component('o-confirm', require('./components/ui/Confirm'));
     Vue.component('o-dropdown', require('./components/ui/Dropdown'));
     Vue.component('o-loader', require('./components/ui/Loader'));
@@ -31,5 +32,5 @@ export default function install (Vue, options = {}) {
     Vue.component('o-notification', require('./components/ui/Notification'));
     Vue.component('o-pagination', require('./components/ui/Pagination'));
     Vue.component('o-search-form', require('./components/ui/SearchForm'));
-    Vue.component('o-sort', require('./components/ui/Sort'));
+    Vue.component('o-table-sort', require('./components/ui/TableSort'));
 }

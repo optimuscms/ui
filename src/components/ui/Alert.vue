@@ -4,7 +4,7 @@
             <div class="alert">
                 <div class="alert-content">
                     <div class="content has-text-grey-darker has-text-centered">
-                        {{ message }}
+                        <slot></slot>
                     </div>
                 </div>
 
@@ -22,14 +22,12 @@
     export default {
         data() {
             return {
-                isActive: false,
-                message: ''
+                isActive: false
             }
         },
 
         methods: {
-            open(message) {
-                this.message = message;
+            open() {
                 this.isActive = true;
             },
 

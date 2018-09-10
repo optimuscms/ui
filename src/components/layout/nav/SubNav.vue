@@ -15,23 +15,22 @@
 </template>
 
 <script>
-    import { mapGetters, mapMutations } from 'vuex';
-
     export default {
-        computed: {
-            ...mapGetters({
-                isOpen: 'navigation/isOpen'
-            })
+        data() {
+            return {
+                isOpen: false
+            }
         },
 
         methods: {
-            ...mapMutations({
-                open: 'navigation/open',
-                close: 'navigation/close'
-            }),
-
             sideToggle() {
-                this.isOpen ? this.close() : this.open();
+                if (this.isOpen) {
+                    this.isOpen = false;
+                    this.$emit('closed');
+                } else {
+                    this.isOpen = true;
+                    this.$emit('opened');
+                }
             }
         }
     }
