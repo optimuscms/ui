@@ -41,10 +41,12 @@
                 default: false
             },
 
-            format: {
-                type: String,
-                default: 'F j, Y - h:i K'
-            }
+            time: {
+                type: Boolean,
+                default: true
+            },
+
+            format: String
         },
 
         data() {
@@ -52,6 +54,16 @@
                 flatpickr: null,
                 
                 newValue: this.value
+            }
+        },
+
+        computed: {
+            altFormat() {
+                if (this.format) {
+                    return this.format;
+                }
+
+                return this.time ? 'F j, Y - h:i K' : 'F j, Y';
             }
         },
 
@@ -70,8 +82,8 @@
         mounted() {
             this.flatpickr = flatpickr(this.$refs.picker, {
                 altInput: true,
-                enableTime: true,
-                altFormat: this.format,
+                enableTime: this.time,
+                altFormat: this.altFormat,
                 dateFormat: 'Y-m-d H:i:S'
             });
         }

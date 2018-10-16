@@ -110,6 +110,18 @@ Props:
   * `optionValue|string`: Override the default options value key
   * `optionLabel|string`: Override the default options label key
 
+**Date Picker:**
+
+```vue
+<o-date-picker v-model="value"></o-date-picker>
+```
+
+Props:
+  * `id|string|required`
+  * `required|boolean`: Enables html validation
+  * `time|boolean`:  Defaults to true, shows a time picker
+  * `format|string`: Visual only format the date and time [formatting tokens](https://flatpickr.js.org/formatting/)
+
 ### Build Components
 
 **Header:**
