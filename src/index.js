@@ -2,6 +2,9 @@
 import NProgress from 'nprogress';
 
 export default function install (Vue, options = {}) {
+    // Import libraries
+    require('./lib/icons');
+
     // Install plugins
     window.progress = NProgress;
 
@@ -13,6 +16,7 @@ export default function install (Vue, options = {}) {
     // Register components
     Vue.component('o-errors', require('./components/forms/Errors'));
     Vue.component('o-checkbox', require('./components/forms/Checkbox'));
+    Vue.component('o-date-picker', require('./components/forms/DatePicker'));
     Vue.component('o-input', require('./components/forms/Input'));
     Vue.component('o-form-field', require('./components/forms/Field'));
     Vue.component('o-select', require('./components/forms/Select'));

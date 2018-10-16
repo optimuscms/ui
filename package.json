@@ -10,6 +10,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
     "@fortawesome/vue-fontawesome": "^0.1.1",
     "bulma": "^0.7.1",
+    "flatpickr": "^4.5.2",
     "nprogress": "^0.2.0",
     "optix-sass": "^3.0.6",
     "velocity-animate": "^1.5.1",
