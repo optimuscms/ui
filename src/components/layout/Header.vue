@@ -1,13 +1,11 @@
 <template>
-    <header class="background is-white has-border-bottom p-4">
-        <div class="level is-mobile">
-            <div class="level-left">
-                <div class="level-item">
-                    <h1 class="title has-text-weight-light">{{ title }}</h1>
-                </div>
+    <header class="bg-white border-b border-grey p-8">
+        <div class="flex justify-between items-center">
+            <div>
+                <h1 class="title font-light">{{ title }}</h1>
             </div>
 
-            <div class="level-right">
+            <div>
                 <slot></slot>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <template>
     <router-link :to="to" tag="li" exact>
-        <a>
+        <a class="sub-nav-link">
             <slot></slot>
         </a>
     </router-link>
@@ -10,9 +10,33 @@
     export default {
         props: {
             to: {
-                type: [Object, String],
+                type: [ Object, String ],
                 required: true
             }
         }
     }
 </script>
+
+<style lang="scss">
+    .sub-nav-link {
+        display: block;
+        color: config('colors.white');
+        font-size: config('textSizes.sm');
+        border-radius: config('borderRadius.default');
+        padding: config('padding.2') config('padding.3');
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: config('colors.white');
+            background-color: config('colors.blue-darkest');
+        }
+    }
+
+    .is-active {
+        .sub-nav-link {
+            color: config('colors.white');
+            background-color: config('colors.blue-darkest');
+        }
+    }
+</style>

@@ -1,15 +1,13 @@
 <template>
-    <div>
-        <notification class="is-danger" :closeable="false">
-            <ul>
-                <template v-for="errorGroup in errors">
-                    <li :key="index" v-for="(error, index) in errorGroup">
-                        {{ error }}
-                    </li>
-                </template>
-            </ul>
-        </notification>
-    </div>
+    <notification class="bg-red text-white" :closeable="false">
+        <ul class="list-reset">
+            <template v-for="errorGroup in errors">
+                <li :key="index" v-for="(error, index) in errorGroup">
+                    {{ error }}
+                </li>
+            </template>
+        </ul>
+    </notification>
 </template>
 
 <script>
