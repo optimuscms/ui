@@ -10,7 +10,7 @@ export default function install (Vue, options = {}) {
 
     progress.configure({
         showSpinner: false,
-        parent: 'section.main'
+        parent: '#main'
     });
 
     // Register components

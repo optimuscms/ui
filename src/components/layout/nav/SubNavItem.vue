@@ -21,7 +21,7 @@
     .sub-nav-link {
         display: block;
         color: config('colors.white');
-        font-size: config('textSizes.sm');
+        font-weight: config('fontWeights.semibold');
         border-radius: config('borderRadius.default');
         padding: config('padding.2') config('padding.3');
 

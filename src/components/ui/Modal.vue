@@ -1,9 +1,11 @@
 <template>
     <transition name="fade">
-        <div class="modal is-active" v-if="active">
+        <div class="modal active" v-if="active">
             <div class="modal-background" @click="$emit('close')"></div>
             
-            <slot></slot>
+            <div class="modal-content">
+                <slot></slot>
+            </div>
         </div>
     </transition>
 </template>

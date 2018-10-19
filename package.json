@@ -15,6 +15,6 @@
     "optix-sass": "^3.0.6",
     "velocity-animate": "^1.5.1",
     "vue": "^2.5.17",
-    "vue-multiselect": "^2.1.0"
+    "vue-multiselect": "^2.1.3"
   }
 }

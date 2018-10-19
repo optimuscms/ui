@@ -1,6 +1,6 @@
 <template>
-    <div ref="dropdown" class="dropdown" :class="{ 'is-active': isActive }">
-        <div class="dropdown-trigger" @click="isActive = ! isActive">
+    <div ref="dropdown" class="dropdown" :class="{ 'active': isActive }">
+        <div @click="isActive = ! isActive">
             <slot name="button"></slot>
         </div>
         

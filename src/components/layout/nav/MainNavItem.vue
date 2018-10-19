@@ -40,11 +40,11 @@
             border-bottom: 1px solid config('colors.white-a-01');
 
             svg {
-                margin-bottom: config('margin.2');
+                margin-bottom: config('margin.3');
             }
 
             strong {
-                font-size: config('textSizes.sm')
+                font-weight: config('fontWeights.semibold')
             }
 
             &:hover,

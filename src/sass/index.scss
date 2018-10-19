@@ -3,6 +3,6 @@
 @import '~nprogress/nprogress.css';
 @import "~vue-multiselect/dist/vue-multiselect.min.css";
 
-@import "components/_index";
-@import "elements/_index";
-@import "views/_index";
+@import "base/index";
+@import "components/index";
+@import "elements/index";

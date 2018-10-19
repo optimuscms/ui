@@ -1,5 +1,5 @@
 <template>
-    <div class="select is-fullwidth">
+    <div class="select w-full">
         <select :id="id" v-model="newValue" :required="required">
             <slot></slot>
         </select>

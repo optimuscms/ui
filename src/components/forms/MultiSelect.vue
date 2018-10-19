@@ -1,5 +1,5 @@
 <template>
-    <div class="select is-fullwidth is-multi">
+    <div class="select w-full multiselect">
         <vue-select
             :value="newValue"
             @input="value => $emit('input', value)"

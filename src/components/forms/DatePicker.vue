@@ -1,14 +1,14 @@
 <template>
-    <div class="field has-addons">
+    <div class="field addons">
         <div class="control">
-            <span class="button is-static">
+            <span class="button static">
                 <span class="icon">
                     <icon icon="calendar-alt"></icon>
                 </span>
             </span>
         </div>
 
-        <div class="control is-expanded">
+        <div class="control flex-grow">
             <input
                 :id="id"
                 ref="picker"

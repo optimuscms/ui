@@ -1,5 +1,5 @@
 <template>
-    <div class="field" :class="{ 'is-required': required }">
+    <div class="field" :class="{ 'required': required }">
         <label :for="input" class="label" v-if="label">{{ label }}</label>
 
         <div class="control">

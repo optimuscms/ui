@@ -1,80 +1,124 @@
+$table-color: config('colors.grey-darker') !default;
+$table-border-color: config('colors.grey-light') !default;
+$table-background-color: config('colors.white') !default;
+
+$table-row-hover-background-color: config('colors.grey-lightest') !default;
+
+$table-actions-color: config('colors.grey-light') !default;
+$table-actions-active-color: config('colors.grey-darker') !default;
+$table-actions-hover-color: config('colors.primary') !default;
+
+$table-row-draft-color: config('colors.grey-dark') !default;
+$table-row-draft-background-color: config('colors.grey-lighter') !default;
+
+table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+th,
+td {
+    text-align: left;
+    vertical-align: middle;
+}
+
 .table {
-    &.is-listing {
-        margin-bottom: 0;
-        white-space: nowrap;
-        border-bottom: $table-cell-border;
+    color: $table-color;
+    white-space: nowrap;
+    background-color: $table-background-color;
 
-        th {
-            padding: 20px;
-        }
-
-        td {
-            padding: 15px 20px;
-        }
-
-        th,
-        td {
-            vertical-align: middle;
-
-            &:first-child {
-                padding-left: 30px;
-            }
-
-            &:last-child {
-                padding-right: 30px;
+    thead {
+        tr {
+            th,
+            td {
+                border-bottom: 2px solid $table-border-color;
             }
         }
     }
 
-    td,
-    th {
-        &.is-narrow {
-            width: 1%;
-        }
+    tbody {
+        tr {
+            th,
+            td {
+                border-bottom: 1px solid $table-border-color;
+            }
 
-        &.is-sort-handle {
-            cursor: grab;
-            text-align: center;
-        }
-    }
-
-    tr {
-        td,
-        th {
-            &.has-actions {
-                text-align: center;
-
-                a {
-                    color: $grey-dark;
+            &:hover {
+                th,
+                td {
+                    background-color: $table-row-hover-background-color;
                 }
             }
         }
+    }
 
-        &:hover {
-            td,
+    thead,
+    tbody {
+        tr {
             th {
-                &.has-actions {
+                padding: 1.25rem;
+            }
+    
+            td {
+                padding: 1rem 1.25rem;
+            }
+            
+            th,
+            td {
+                &:first-child {
+                    padding-left: 2rem;
+                }
+    
+                &:last-child {
+                    padding-right: 2rem;
+                }
+    
+                &.narrow {
+                    width: 1%;
+                    text-align: center;
+                }
+    
+                &.sort-handle {
+                    cursor: grab;
+                    text-align: center;
+                }
+    
+                &.actions {
+                    text-align: center;
+    
                     a {
-                        color: $grey-darker;
-
-                        &:hover {
-                            color: $primary;
-                        }
+                        color: $table-actions-color;
+                    }
+                }
+    
+            }
+    
+            &.draft {
+                th,
+                td {
+                    background-color: $table-row-draft-background-color;
+                }
+                
+                &:not(:hover) {
+                    th,
+                    td {
+                        color: $table-row-draft-color;
                     }
                 }
             }
-        }
-
-        &.is-draft {
-            th,
-            td {
-                background-color: lighten($grey-lighter, 2%);
-            }
-
-            &:not(:hover) {
+    
+            &:hover {
                 th,
                 td {
-                    color: lighten($text, 20%);
+                    &.actions {
+                        a {
+                            color: $table-actions-active-color;
+    
+                            &:hover {
+                                color: $table-actions-hover-color;
+                            }
+                        }
+                    }
                 }
             }
         }

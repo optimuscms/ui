@@ -1,18 +1,14 @@
 <template>
     <o-modal :active="isActive" @close="close">
-        <div class="modal-content">
-            <div class="alert">
-                <div class="alert-content">
-                    <div class="content has-text-grey-darker has-text-centered">
-                        <slot></slot>
-                    </div>
-                </div>
+        <div class="bg-white rounded mx-auto max-w-sm">
+            <div class="content px-6 pt-6 text-center">
+                <slot></slot>
+            </div>
 
-                <footer class="modal-card-foot">
-                    <a class="button is-success" @click="close">
-                        <slot name="confirmButtonText">Ok</slot>
-                    </a>
-                </footer>
+            <div class="p-6 text-center">
+                <a class="button button-green w-full sm:w-1/2" @click="close">
+                    <slot name="confirmButtonText">Ok</slot>
+                </a>
             </div>
         </div>
     </o-modal>
