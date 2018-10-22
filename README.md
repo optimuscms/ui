@@ -25,20 +25,21 @@ Vue.use(OptimusUi);
 
 #### Import the SCSS:
 
-Styles are a mix of the [Bulma](https://bulma.io/) framework and helpers from Optix Sass, so we must setup the scss imports as follows:
+UI components are built using a mixture or [Tailwindcss](https://tailwindcss.com) utility classes, and [Optix Solutions](https://github.com/optixsolutions/sass) sass framework.
 
 ```scss
 @charset "utf-8";
 
-// Setup package variables
-@import "~bulma/sass/utilities/initial-variables";
-@import "~optix-sass/variables";
+@tailwind preflight;
+@tailwind components;
+
+@import "variables";
 @import "~@optimuscms/ui/src/sass/variables";
 
-// Import packages
-@import "~bulma";
-@import "~optix-sass";
-@import "~@optimuscms/ui/src/sass/_all";
+@import "~@optix/sass";
+@import "~@optimuscms/ui/src/sass/index";
+
+@tailwind utilities;
 ```
 
 ## Usage
@@ -171,9 +172,6 @@ Events:
 Props:
   * `to|(object|string)|required`: vue router location
 
-Slots: 
-  * `confirmButtonText`: Confirm
-
 ### UI Components
 
 **Alert:**
@@ -190,18 +188,19 @@ We can open alert via the `ref`.
 this.$refs.alert.open();
 ```
 
-Change the default confirm button text via the named slot `confirmButtonText`
+Props:
+  * `buttonText|string`: text for the primary button by default `Ok`
 
-**Confirm:**
+**Confirmation:**
 
 ```vue
-<o-confirm
+<o-confirmation
     ref="confirm"
     @confirm="handleItem"
-></o-confirm>
+></o-confirmation>
 ```
 
-We can open the confirm modal via the `ref`, we can also pass an object which will be passed back in the confirm event.
+We can open the confirmation modal via the `ref`, we can also pass an object which will be passed back in the confirmation event.
 
 ```js
 this.$refs.confirm.open({
@@ -211,23 +210,12 @@ this.$refs.confirm.open({
 ```
 
 Props:
-  * `type|string`: type of alert, `info, warning, danger` by default `success`
+  * `buttonText|string`: text for the primary button by default `Confirm`
+  * `buttonClass|string`: class for the primary button by default `button-green`
+  * `buttonCancelText|string`: text for the secondary button by default `Cancel`
 
 Events:
   * `confirm`: emitted when the confirm button is clicked
-
-Slots: 
-  * `default`: The default slot proped with the passed object
-  * `confirmButtonText`: Confirm
-  * `cancelButtonText`: Cancel
-
-Proped slot example:
-
-```vue
-<template slot-scope="item">
-    Are you sure you want to move <strong>"{{ item.title }}"</strong>
-</template>
-```
 
 **Notification:**
 
@@ -241,28 +229,25 @@ Props:
 Events:
   * `close`: emitted when notification is closed
 
-Slots:
-  * `default`: Notification content
-
 **Dropdown:**
 
 ```vue
-<o-dropdown>
-    <a slot="button">Please select...</a>
-
-    <a class="dropdown-item">All categories</a>
-    <a class="dropdown-item">Category One</a>
-</o-dropdown>
+<o-dropdown v-model="filters.category"></o-dropdown>
 ```
 
+Props:
+  * `options|array|required`: an array of objects containing a value keyed as `value` and label keyed as `label`
+  * `placeholder|string`: Used as the option when nothing is selected `Please select` by default
+  * `icon|string`: Icon used in the trigger button `angle-down` by default
+
 Slots:
-  * `default`: Dropdown items
-  * `button`: Element to be used to trigger the dropdown
+  * `button`
+  * `option`
 
 **Search Form:**
 
 ```vue
-<o-search-form v-model="searchQuery"></o-search-form>
+<o-search v-model="filters.title"></o-search>
 ```
 
 Props:
@@ -274,15 +259,12 @@ Events:
 **Table Sort:**
 
 ```vue
-<o-table-sort></o-table-sort>
+<o-th-sort v-model="filters.sort"></o-th-sort>
 ```
 
 Props:
   * `column|string|required`: Name of the column
-  * `current|string`: Name of the column which is currently being ordered by
 
-Events:
-  * `order`: emits the new column name with direction prefix
 
 **Pagination:**
 
@@ -294,7 +276,7 @@ Props:
   * `options|object`: pagination object returned from laravel
 
 Events:
-  * `change-page`: emits page number when a pagination link is clicked
+  * `change`: emits page number when a pagination link is clicked
   
 **Loader:**
 
@@ -313,9 +295,6 @@ Props:
 
 Props:
   * `active|boolean|required`: used to show or hide the modal
-
-Slots:
-  * `default`: Modal content
 
 ## License
 

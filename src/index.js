@@ -29,12 +29,12 @@ export default function install (Vue, options = {}) {
     Vue.component('o-sub-nav-item', require('./components/layout/nav/SubNavItem'));
 
     Vue.component('o-alert', require('./components/ui/Alert'));
-    Vue.component('o-confirm', require('./components/ui/Confirm'));
+    Vue.component('o-confirmation', require('./components/ui/Confirmation'));
     Vue.component('o-dropdown', require('./components/ui/Dropdown'));
     Vue.component('o-loader', require('./components/ui/Loader'));
     Vue.component('o-modal', require('./components/ui/Modal'));
     Vue.component('o-notification', require('./components/ui/Notification'));
     Vue.component('o-pagination', require('./components/ui/Pagination'));
-    Vue.component('o-search-form', require('./components/ui/SearchForm'));
-    Vue.component('o-table-sort', require('./components/ui/TableSort'));
+    Vue.component('o-search', require('./components/ui/Search'));
+    Vue.component('o-th-sort', require('./components/ui/ThSort'));
 }

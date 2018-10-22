@@ -6,9 +6,7 @@
             </div>
 
             <div class="p-6 text-center">
-                <a class="button button-green w-full sm:w-1/2" @click="close">
-                    <slot name="confirmButtonText">Ok</slot>
-                </a>
+                <a class="button button-green w-full sm:w-1/2" @click="close">{{ buttonText }}</a>
             </div>
         </div>
     </o-modal>
@@ -16,6 +14,13 @@
 
 <script>
     export default {
+        props: {
+            buttonText: {
+                type: String,
+                default: 'Ok'
+            }
+        },
+
         data() {
             return {
                 isActive: false

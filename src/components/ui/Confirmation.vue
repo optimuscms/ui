@@ -10,18 +10,11 @@
             <div class="buttons">
                 <a
                     class="button"
-                    :class="['button-' + buttonClass]"
+                    :class="buttonClass"
                     @click="confirm"
-                >
-                    <slot name="confirmButtonText">Confirm</slot>
-                </a>
+                >{{ buttonText }}</a>
 
-                <a
-                    class="button"
-                    @click="close"
-                >
-                    <slot name="cancelButtonText">Cancel</slot>
-                </a>
+                <a class="button" @click="close">{{ buttonCancelText }}</a>
             </div>
         </div>
     </o-modal>
@@ -30,10 +23,20 @@
 <script>
     export default {
         props: {
+            buttonText: {
+                type: String,
+                default: 'Confirm'
+            },
+
             buttonClass: {
                 type: String,
-                default: 'green'
-            }
+                default: 'button-green'
+            },
+
+            buttonCancelText: {
+                type: String,
+                default: 'Cancel'
+            },
         },
 
         data() {

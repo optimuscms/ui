@@ -1,13 +1,13 @@
 <template>
     <form @submit.prevent="submit">
-        <div class="field has-addons">
-            <label for="search" class="is-hidden">Search</label>
-
-            <div class="control">
+        <label for="search" class="hidden">Search</label>
+        
+        <div class="field addons">
+            <div class="control flex-grow">
                 <o-input
                     id="search"
                     type="search"
-                    v-model="input"
+                    v-model="newValue"
                     :placeholder="placeholder"
                 ></o-input>
             </div>
@@ -32,26 +32,19 @@
             },
 
             value: {
-                type: String,
                 default: null
             }
         },
 
         data() {
             return {
-                input: this.value 
-            }
-        },
-
-        watch: {
-            input() {
-                this.$emit('input', this.input);
+                newValue: this.value 
             }
         },
 
         methods: {
             submit() {
-                this.$emit('submit');
+                this.$emit('submit', this.newValue);
             }
         }
     }

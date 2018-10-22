@@ -1,8 +1,12 @@
 $body-color: config('colors.grey-darker');
 $link-color: config('colors.blue-light');
 
-$button-border-width: 1px;
+$button-color: config('colors.grey-darker');
 $button-static-color: config('colors.grey-dark');
+
+$button-border-width: 1px;
+$button-border-color: config('colors.grey-light');
+$button-hover-border-color: config('colors.grey');
 
 $title-size: config('textSizes.xl');
 $title-color: config('colors.blue');
@@ -15,3 +19,6 @@ $label-color: config('colors.blue-light');
 $label-weight: config('fontWeights.bold');
 
 $help-color: config('colors.grey-darker');
+
+$pagination-color: config('colors.grey-dark');
+$pagination-current-background-color: config('colors.blue-light');

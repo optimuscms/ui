@@ -1,83 +1,9 @@
-$table-color: config('colors.grey-darker') !default;
-$table-border-color: config('colors.grey-light') !default;
-$table-background-color: config('colors.white') !default;
-
-$table-row-hover-background-color: config('colors.grey-lightest') !default;
-
-$table-actions-color: config('colors.grey-light') !default;
-$table-actions-active-color: config('colors.grey-darker') !default;
-$table-actions-hover-color: config('colors.primary') !default;
-
-$table-row-draft-color: config('colors.grey-dark') !default;
-$table-row-draft-background-color: config('colors.grey-lighter') !default;
-
-table {
-    width: 100%;
-    border-spacing: 0;
-}
-
-th,
-td {
-    text-align: left;
-    vertical-align: middle;
-}
-
 .table {
-    color: $table-color;
-    white-space: nowrap;
-    background-color: $table-background-color;
-
-    thead {
-        tr {
-            th,
-            td {
-                border-bottom: 2px solid $table-border-color;
-            }
-        }
-    }
-
-    tbody {
-        tr {
-            th,
-            td {
-                border-bottom: 1px solid $table-border-color;
-            }
-
-            &:hover {
-                th,
-                td {
-                    background-color: $table-row-hover-background-color;
-                }
-            }
-        }
-    }
-
     thead,
     tbody {
         tr {
-            th {
-                padding: 1.25rem;
-            }
-    
-            td {
-                padding: 1rem 1.25rem;
-            }
-            
             th,
             td {
-                &:first-child {
-                    padding-left: 2rem;
-                }
-    
-                &:last-child {
-                    padding-right: 2rem;
-                }
-    
-                &.narrow {
-                    width: 1%;
-                    text-align: center;
-                }
-    
                 &.sort-handle {
                     cursor: grab;
                     text-align: center;
@@ -87,7 +13,7 @@ td {
                     text-align: center;
     
                     a {
-                        color: $table-actions-color;
+                        color: config('colors.grey-light');
                     }
                 }
     
@@ -96,13 +22,13 @@ td {
             &.draft {
                 th,
                 td {
-                    background-color: $table-row-draft-background-color;
+                    background-color: config('colors.grey-lighter');
                 }
                 
                 &:not(:hover) {
                     th,
                     td {
-                        color: $table-row-draft-color;
+                        color: config('colors.grey-dark');
                     }
                 }
             }
@@ -112,10 +38,10 @@ td {
                 td {
                     &.actions {
                         a {
-                            color: $table-actions-active-color;
+                            color: config('colors.grey-darker');
     
                             &:hover {
-                                color: $table-actions-hover-color;
+                                color: config('colors.primary');
                             }
                         }
                     }

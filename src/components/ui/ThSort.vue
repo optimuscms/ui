@@ -1,13 +1,15 @@
 <template>
-    <a class="text-has-icon" @click="sort">
-        <span class="is-unselectable">
-            <slot></slot>
-        </span>
+    <th>
+        <a class="inline-flex items-center" @click="sort">
+            <span class="select-none">
+                <slot></slot>
+            </span>
 
-        <span class="icon" :class="{ 'is-faded': ! direction }">
-            <icon :icon="icon"></icon>
-        </span>
-    </a>
+            <span class="icon ml-4" :class="{ 'opacity-50': ! direction }">
+                <icon :icon="icon"></icon>
+            </span>
+        </a>
+    </th>
 </template>
 
 <script>
@@ -18,7 +20,7 @@
                 required: true
             },
 
-            current: String
+            value: String
         },
 
         data() {
@@ -64,7 +66,7 @@
                     sort = null;
                 }
                 
-                this.$emit('order', sort);
+                this.$emit('input', sort);
             }
         }
     }
