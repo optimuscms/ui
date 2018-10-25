@@ -2,7 +2,7 @@
     <div ref="dropdown" class="dropdown" :class="{ 'open': isOpen }">
         <div class="cursor-pointer" @click="isOpen = ! isOpen">
             <slot name="button" :is-open="isOpen">
-                <span class="button">
+                <span class="button" :class="buttonClass">
                     <span>{{ buttonText }}</span>
 
                     <span class="icon">
@@ -12,25 +12,28 @@
             </slot>
         </div>
         
-        <div class="dropdown-menu" @click="isOpen = false">
+        <div class="dropdown-menu max-w-xs" @click="isOpen = false">
             <div class="dropdown-scroll">
                 <div class="dropdown-content">
-                    <a
-                        class="dropdown-item"
-                        @click="newValue = null"
-                        :class="{ 'active': ! value }"
-                    >{{ placeholder }}</a>
-                    
-                    <template v-for="option in options">
-                        <slot name="option" :option="option">
-                            <a
-                                :key="option.value"
-                                class="dropdown-item"
-                                @click="newValue = option.value"
-                                :class="{ 'active': option.value == value }"
-                            >{{ option.label }}</a>
-                        </slot>
-                    </template>
+                    <slot>
+                        <a
+                            class="dropdown-item"
+                            v-if="defaultOption"
+                            @click="newValue = null"
+                            :class="{ 'active': ! value }"
+                        >{{ placeholder }}</a>
+                        
+                        <template v-for="option in options">
+                            <slot name="option" :option="option">
+                                <a
+                                    :key="option.value"
+                                    class="dropdown-item"
+                                    @click="newValue = option.value"
+                                    :class="{ 'active': option.value == value }"
+                                >{{ option.label }}</a>
+                            </slot>
+                        </template>
+                    </slot>
                 </div>
             </div>
         </div>
@@ -49,9 +52,19 @@
                 default: () => []
             },
 
+            defaultOption: {
+                type: Boolean,
+                default: true
+            },
+
             placeholder: {
                 type: String,
                 default: 'Please select'
+            },
+
+            buttonClass: {
+                type: String,
+                default: ''
             },
 
             icon: {

@@ -1,18 +1,17 @@
 {
   "name": "@optimuscms/ui",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "author": "Rich Moore",
   "license": "MIT",
   "main": "src/index.js",
-  "dependencies": {
+  "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
     "@fortawesome/free-regular-svg-icons": "^5.3.1",
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
     "@fortawesome/vue-fontawesome": "^0.1.1",
-    "bulma": "^0.7.1",
+    "@optix/sass": "^0.0.1",
     "flatpickr": "^4.5.2",
     "nprogress": "^0.2.0",
-    "optix-sass": "^3.0.6",
     "velocity-animate": "^1.5.1",
     "vue": "^2.5.17",
     "vue-multiselect": "^2.1.3"

@@ -1,5 +1,5 @@
 <template>
-    <div class="side-primary relative w-24 z-50 bg-blue md:flex-no-shrink">
+    <div class="side-primary relative w-24 z-20 bg-blue md:flex-no-shrink">
         <div class="flex h-full overflow-auto md:overflow-visible">
             <nav class="nav w-full relative">
                 <slot></slot>

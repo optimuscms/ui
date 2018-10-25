@@ -1,7 +1,7 @@
 <template>
     <o-modal :active="isActive" @close="close">
-        <div class="bg-white rounded mx-auto max-w-sm">
-            <div class="content px-6 pt-6 text-center">
+        <div class="modal-content bg-white rounded max-w-sm">
+            <div class="content px-6 pt-8 text-center">
                 <slot></slot>
             </div>
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="side-secondary w-64 z-40 bg-blue-darker md:relative md:flex-no-shrink">
+    <div class="side-secondary w-64 z-10 bg-blue-darker md:relative md:flex-no-shrink">
         <a class="side-toggle w-5 h-full z-30 bg-blue-darker md:hidden" @click="sideToggle">
             <span class="dots">
                 <i></i>

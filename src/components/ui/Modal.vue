@@ -3,9 +3,7 @@
         <div class="modal active" v-if="active">
             <div class="modal-background" @click="$emit('close')"></div>
             
-            <div class="modal-content">
-                <slot></slot>
-            </div>
+            <slot></slot>
         </div>
     </transition>
 </template>
