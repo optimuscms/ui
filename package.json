@@ -1,10 +1,10 @@
 {
   "name": "@optimuscms/ui",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": "Rich Moore",
   "license": "MIT",
   "main": "src/index.js",
-  "devDependencies": {
+  "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
     "@fortawesome/free-regular-svg-icons": "^5.3.1",
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
