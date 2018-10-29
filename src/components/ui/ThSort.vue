@@ -30,28 +30,42 @@
         },
 
         computed: {
-            icon() {
-                let icon = 'sort';
+            isActive() {
+                let column = (this.value && this.value.charAt(0) === '-') ? this.value.substr(1) : this.value;
 
-                if (this.direction) {
-                    icon = this.direction === 'desc' ? 'sort-up' : 'sort-down';
+                return column === this.column;
+            },
+
+            icon() {
+                if (! this.direction) {
+                    return 'sort';
                 }
 
-                return icon;
+                return this.direction === 'desc' ? 'sort-up' : 'sort-down';
             }
         },
 
         watch: {
-            current(value) {
-                value = (value && value.charAt(0) === '-') ? value.substr(1) : value;
-                
-                if (value != this.column) {
+            value() {
+                if (! this.isActive) {
                     this.direction = null;
                 }
             }
         },
 
+        created() {
+            this.direction = this.getDefaultDirection();
+        },
+
         methods: {
+            getDefaultDirection() {
+                if (! this.isActive) {
+                    return null;
+                }
+
+                return this.value.charAt(0) === '-' ? 'desc' : 'asc';
+            },
+
             sort() {
                 let sort = null;
 
