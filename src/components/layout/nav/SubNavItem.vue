@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="to" tag="li" exact>
+    <router-link :to="to" tag="li">
         <a>
             <slot></slot>
         </a>
