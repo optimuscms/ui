@@ -1,7 +1,6 @@
-// Todo make vue plugin for ngropress
 import NProgress from 'nprogress';
 
-export default function install (Vue, options = {}) {
+export default function install (Vue) {
     // Import libraries
     require('./lib/icons');
 
@@ -36,5 +35,7 @@ export default function install (Vue, options = {}) {
     Vue.component('o-notification', require('./components/ui/Notification'));
     Vue.component('o-pagination', require('./components/ui/Pagination'));
     Vue.component('o-search', require('./components/ui/Search'));
+    Vue.component('o-tabs', require('./components/ui/Tabs'));
+    Vue.component('o-tab', require('./components/ui/Tab'));
     Vue.component('o-th-sort', require('./components/ui/ThSort'));
 }

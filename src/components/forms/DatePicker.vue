@@ -86,6 +86,10 @@
                 altFormat: this.altFormat,
                 dateFormat: 'Y-m-d H:i:S'
             });
+        },
+
+        beforeDestroy() {
+            this.flatpickr.destroy();
         }
     }
 </script>
