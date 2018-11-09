@@ -1,6 +1,6 @@
 <template>
     <transition name="notification">
-        <div class="px-6 py-4">
+        <div class="p-6">
             <a class="delete" v-if="closeable" @click="$emit('close')"></a>
 
             <slot></slot>

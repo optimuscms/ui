@@ -3,7 +3,7 @@
         <vue-select
             :value="newValue"
             @input="value => $emit('input', value)"
-            :options="options.map(category => category[this.optionValue])"
+            :options="options.map(option => option[this.optionValue])"
             :multiple="true"
             :custom-label="label"
         ></vue-select>
@@ -29,12 +29,12 @@
 
             optionValue: {
                 type: String,
-                default: 'id'
+                default: 'value'
             },
 
             optionLabel: {
                 type: String,
-                default: 'name'
+                default: 'label'
             }
         },
 
