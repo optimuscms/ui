@@ -7,7 +7,7 @@
                 <o-input
                     id="search"
                     type="search"
-                    v-model="input"
+                    v-model="newValue"
                     :placeholder="placeholder"
                 ></o-input>
             </div>
@@ -39,19 +39,13 @@
 
         data() {
             return {
-                input: this.value 
-            }
-        },
-
-        watch: {
-            input() {
-                this.$emit('input', this.input);
+                newValue: this.value 
             }
         },
 
         methods: {
             submit() {
-                this.$emit('submit');
+                this.$emit('input', this.newValue);
             }
         }
     }
