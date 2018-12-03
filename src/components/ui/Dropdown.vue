@@ -1,13 +1,39 @@
 <template>
-    <div ref="dropdown" class="dropdown" :class="{ 'is-active': isActive }">
-        <div class="dropdown-trigger" @click="isActive = ! isActive">
-            <slot name="button"></slot>
+    <div ref="dropdown" class="dropdown" :class="{ 'is-active': isOpen }">
+        <div class="dropdown-trigger" @click="isOpen = ! isOpen">
+            <slot name="button" :is-open="isOpen">
+                <a class="button" :class="buttonClass">
+                    <span>{{ buttonText }}</span>
+
+                    <span class="icon is-small">
+                        <icon :icon="icon"></icon>
+                    </span>
+                </a>
+            </slot>
         </div>
         
-        <div class="dropdown-menu" @click="isActive = false">
+        <div class="dropdown-menu" @click="isOpen = false">
             <div class="is-scrollable">
                 <div class="dropdown-content">
-                    <slot></slot>
+                    <slot>
+                        <a
+                            class="dropdown-item"
+                            v-if="defaultOption"
+                            @click="newValue = null"
+                            :class="{ 'is-active': ! value }"
+                        >{{ placeholder }}</a>
+                        
+                        <template v-for="option in options">
+                            <slot name="option" :option="option">
+                                <a
+                                    :key="option.value"
+                                    class="dropdown-item"
+                                    @click="newValue = option.value"
+                                    :class="{ 'is-active': option.value == value }"
+                                >{{ option.label }}</a>
+                            </slot>
+                        </template>
+                    </slot>
                 </div>
             </div>
         </div>
@@ -16,9 +42,55 @@
 
 <script>
     export default {
+        props: {
+            value: {
+                default: null
+            },
+
+            options: {
+                type: Array,
+                default: () => []
+            },
+
+            defaultOption: {
+                type: Boolean,
+                default: true
+            },
+
+            placeholder: {
+                type: String,
+                default: 'Please select'
+            },
+
+            buttonClass: {
+                type: String,
+                default: ''
+            },
+
+            icon: {
+                type: [ String, Object ],
+                default: 'angle-down'
+            }
+        },
+
         data() {
             return {
-                isActive: false
+                isOpen: false,
+                newValue: this.value
+            }
+        },
+
+        computed: {
+            buttonText() {
+                return this.value
+                    ? this.options.find(({ value }) => value === this.value).label
+                    : this.placeholder;
+            }
+        },
+
+        watch: {
+            newValue(value) {
+                this.$emit('input', value);
             }
         },
 
@@ -36,7 +108,7 @@
                     (this.$refs.dropdown !== event.target)
                     && ! this.$refs.dropdown.contains(event.target)
                 ) {
-                    this.isActive = false;
+                    this.isOpen = false;
                 }
             }
         }
