@@ -82,9 +82,13 @@
 
         computed: {
             buttonText() {
-                return this.value
-                    ? this.options.find(({ value }) => value === this.value).label
-                    : this.placeholder;
+                let option = null;
+
+                if (this.newValue) {
+                    option = this.options.find(({ value }) => value == this.newValue);
+                }
+
+                return option ? option.label : this.placeholder;
             }
         },
 
