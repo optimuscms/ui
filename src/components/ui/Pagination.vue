@@ -1,33 +1,30 @@
 <template>
-    <nav class="pagination" v-if="hasPages()">
+    <nav class="pagination is-centered" v-if="isVisible">
         <a
-            v-if="hasPreviousPage()"
             class="pagination-previous"
+            :disabled="! hasPreviousPage"
             @click="changePage(previousPage)"
-        >Previous</a>
-
-        <span class="pagination-previous" disabled v-else>Previous</span>
+        >Prev</a>
 
         <a
-            v-if="hasNextPage()"
             class="pagination-next"
+            :disabled="! hasNextPage"
             @click="changePage(nextPage)"
         >Next</a>
 
-        <span class="pagination-next" disabled v-else>Next</span>
-
         <ul class="pagination-list">
-            <li :key="page" v-for="page in options.last_page">
+            <li :key="page" v-for="page in pages">
                 <span
-                    v-if="isCurrent(page)"
-                    class="pagination-link current"
-                >{{ page }}</span>
-                
+                    v-if="page === seperator"
+                    class="pagination-ellipsis"
+                >{{ seperator }}</span>
+
                 <a
                     class="pagination-link"
-                    @click="changePage(page)"
                     v-else
-                >{{ page }}</a>
+                    @click="changePage(page + 1)"
+                    :class="{ 'current': page === currentPage }"
+                >{{ page + 1 }}</a>
             </li>
         </ul>
     </nav>
@@ -36,22 +33,37 @@
 <script>
     export default {
         props: {
-            options: Object
-        },
+            options: {
+                type: Object,
+                default: null
+            },
 
+            visiblePages: {
+                type: Number,
+                default: 3
+            },
+
+            seperator: {
+                type: String,
+                default: '...'
+            }
+        },
+        
         computed: {
+            isVisible() {
+                return this.options && this.options.last_page > 1;
+            },
+
+            currentPage() {
+                return this.options ? this.options.current_page - 1 : 0;
+            },
+
             previousPage() {
                 return this.options.current_page - 1;
             },
 
             nextPage() {
                 return this.options.current_page + 1;
-            }
-        },
-
-        methods: {
-            hasPages() {
-                return this.options && this.options.last_page > 1;
             },
 
             hasPreviousPage() {
@@ -62,17 +74,73 @@
                 return this.nextPage <= this.options.last_page;
             },
 
-            isCurrent(page) {
-                return this.options.current_page === page;
+            pages() {
+                let pages;
+                
+                if (this.filteredPages) {
+                    pages = [
+                        this.filteredPages[0] - 1 === 1 ? 1 : this.seperator,
+
+                        ...this.filteredPages,
+
+                        this.filteredPages[this.filteredPages.length - 1] + 1 === this.options.last_page - 2
+                            ? this.options.last_page - 2
+                            : this.seperator
+                    ];
+                } else {
+                    pages = [ ...Array(this.options.last_page - 2).keys() ].map(page => {
+                        return page + 1
+                    });
+                }
+
+                return [
+                    0,
+                    ...pages,
+                    this.options.last_page - 1
+                ];
             },
 
+            filteredPages() {
+                let toFilterPages = [...Array(this.options.last_page).keys()].slice(2, -2);
+
+                if (this.visiblePages > toFilterPages.length) {
+                    return null;
+                }
+
+                let diff = this.visiblePages / 2;
+                let diffFirst = this.currentPage - toFilterPages[0];
+                let diffLast = this.currentPage - toFilterPages[toFilterPages.length - 1];
+
+                if (diffFirst < diff) {
+                    return toFilterPages.slice(0, this.visiblePages);
+                }
+                
+                if (diffLast >= -diff) {
+                    return toFilterPages.slice(-this.visiblePages);
+                }
+
+                return toFilterPages.filter(page => {
+                    let diffPage = this.currentPage - page;
+
+                    return diffPage < 0
+                        ? Math.abs(diffPage) <= diff
+                        : diffPage < diff;
+                });
+            }
+        },
+
+        methods: {
             changePage(page) {
-                if (page < 1 || page > this.options.last_page) {
+                if (
+                    page < 1
+                    || page > this.options.last_page
+                    || page === this.options.current_page
+                ) {
                     return;
                 }
 
                 this.options.current_page = page;
-                this.$emit('change', page);
+                this.$emit('change-page', page);
             }
         }
     }
