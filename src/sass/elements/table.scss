@@ -1,7 +1,6 @@
 .table {
     &.is-listing {
         margin-bottom: 0;
-        white-space: nowrap;
         border-bottom: $table-cell-border;
 
         th {
@@ -36,6 +35,10 @@
             cursor: grab;
             text-align: center;
         }
+
+        &.has-no-wrap {
+            white-space: nowrap;
+        }
     }
 
     tr {
@@ -43,6 +46,7 @@
         th {
             &.has-actions {
                 text-align: center;
+                white-space: nowrap;
 
                 a {
                     color: $grey-dark;
